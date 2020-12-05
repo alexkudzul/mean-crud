@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <!-- ngForm es el nombre del formulario servira para agregar un post en post.component -->
+          <form #postForm="ngForm" (ngSubmit)="addOrEditPost(postForm)">
+            <input type="hidden" name="_id" #_id = "ngModel" [(ngModel)] ="newPost._id">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="title" #name="ngModel" [(ngModel)]="newPost.title" placeholder="Enter you title">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="excerpt" #name="ngModel" [(ngModel)]="newPost.excerpt" placeholder="Enter you excerpt">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="content" #name="ngModel" [(ngModel)]="newPost.content" placeholder="Enter you content">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="category" #name="ngModel" [(ngModel)]="newPost.category" placeholder="Enter you category">
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button class="btn">Save</button>
+                  <button class="btn right" (click) = "resetForm(postForm)">Clean</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Excerpt</th>
+          <th>Content</th>
+          <th>Category</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of allPosts">
+            <td>{{post.title}}</td>
+            <td>{{post.excerpt}}</td>
+            <td>{{post.content}}</td>
+            <td>{{post.category}}</td>
+            <td>
+              <a (click)= "editPost(post)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)= "deletePost(post._id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ----------------------------------------- V2 --------------------------------------------- -->
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          ngForm es el nombre del formulario servira para agregar un post en post.component
+          <form #postForm="ngForm" (ngSubmit)="addPost(postForm)">
+            <input type="hidden" name="_id" #_id = "ngModel" [(ngModel)] ="postService.selectedPost._id">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="title" #name="ngModel" [(ngModel)]="postService.selectedPost.title" placeholder="Enter you title">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="excerpt" #name="ngModel" [(ngModel)]="postService.selectedPost.excerpt" placeholder="Enter you excerpt">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="content" #name="ngModel" [(ngModel)]="postService.selectedPost.content" placeholder="Enter you content">
+              </div>
+              <div class="input-field col s12">
+                <input type="text" name="category" #name="ngModel" [(ngModel)]="postService.selectedPost.category" placeholder="Enter you category">
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button class="btn">Save</button>
+                  <button class="btn right" (click) = "resetForm(postForm)">Clean</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Excerpt</th>
+          <th>Content</th>
+          <th>Category</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of postService.posts">
+            <td>{{post.title}}</td>
+            <td>{{post.excerpt}}</td>
+            <td>{{post.content}}</td>
+            <td>{{post.category}}</td>
+            <td>
+              <a (click)= "editPost(post)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)= "deletePost(post._id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
